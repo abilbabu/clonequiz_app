@@ -1,5 +1,6 @@
 import 'package:clonequiz_app/dummy_db.dart';
 import 'package:clonequiz_app/utils/color_constants.dart';
+
 import 'package:flutter/material.dart';
 
 class ResultScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class ResultScreen extends StatefulWidget {
 class _ResultScreenState extends State<ResultScreen> {
   int starCount = 0;
   calculatePercentage() {
-    var percentage = (widget.RightansCount / DummyDb.itemlist.length) * 100;
+    var percentage = (widget.RightansCount / DummyDb.items.length) * 100;
     if (percentage >= 80) {
       starCount = 3;
     } else if (percentage >= 50) {
@@ -100,7 +101,9 @@ class _ResultScreenState extends State<ResultScreen> {
                 ),
                 SizedBox(width: 10),
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    //  Navigator.push(context, MaterialPageRoute(builder: (context) => QuestionScreen(itemname: itemname),))
+                  },
                   child: Text(
                     "Retry",
                     style: TextStyle(
@@ -108,9 +111,75 @@ class _ResultScreenState extends State<ResultScreen> {
                         fontWeight: FontWeight.w600,
                         fontSize: 18),
                   ),
-                )
+                ),
               ],
             )),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Container(
+                  height: 70,
+                  width: 70,
+                  decoration: BoxDecoration(
+                      color: ColorConstants.Containerclr,
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.home,
+                        color: ColorConstants.TextWhite,
+                        size: 35,
+                      ),
+                      Text(
+                        "Home",
+                        style: TextStyle(
+                            color: ColorConstants.TextWhite,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              SizedBox(
+                width: 15,
+              ),
+              Container(
+                height: 70,
+                width: 70,
+                decoration: BoxDecoration(
+                    color: ColorConstants.Containerclr,
+                    borderRadius: BorderRadius.circular(15)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Icon(
+                      Icons.settings,
+                      color: ColorConstants.TextWhite,
+                      size: 35,
+                    ),
+                    Text(
+                      "Setting",
+                      style: TextStyle(
+                          color: ColorConstants.TextWhite,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           )
         ],
       ),

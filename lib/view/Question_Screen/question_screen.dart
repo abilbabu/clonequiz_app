@@ -11,38 +11,34 @@ class QuestionScreen extends StatefulWidget {
   State<QuestionScreen> createState() => _QuestionScreenState();
 }
 
-
-
 class _QuestionScreenState extends State<QuestionScreen> {
+  items() {
+    print(widget.itemname);
+    if (widget.itemname == "Sports") {
+      itemlist = DummyDb.SportsList;
+    } else if (widget.itemname == "General Knowledge") {
+      itemlist = DummyDb.gkList;
+    } else if (widget.itemname == "Maths") {
+      itemlist = DummyDb.mathsList;
+    } else if (widget.itemname == "History") {
+      itemlist = DummyDb.historyList;
+    } else if (widget.itemname == "Science ") {
+      itemlist = DummyDb.ScienceList;
+    } else {
+      itemlist = DummyDb.technologyList;
+    }
+  }
 
-items() {
-  print(widget.itemname);
-  if(widget.itemname=="Sports"){
-    itemlist=DummyDb.SportsList;
-  }else if(widget.itemname=="General Knowledge"){
-    itemlist=DummyDb.gkList;
-  }else if(widget.itemname=="Maths"){
-    itemlist=DummyDb.mathsList;
+  @override
+  void initState() {
+    super.initState();
+    items();
   }
-  else if(widget.itemname=="History"){
-    itemlist=DummyDb.historyList;
-  }
-  else if(widget.itemname=="Science "){
-    itemlist=DummyDb.ScienceList;
-  }else{
-    itemlist=DummyDb.technologyList;
-  }
-}
 
-@override
-void initState() {
-  super.initState();
-  items();
-}
   dynamic count = 0;
   int? selectedanswerindex;
   int rightAnswerCount = 0;
-  var itemlist=[];
+  var itemlist = [];
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +63,7 @@ void initState() {
                     child: Center(
                       child: Text(
                         textAlign: TextAlign.center,
-                       itemlist[count]["question"],
+                        itemlist[count]["question"],
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 18,
@@ -85,7 +81,7 @@ void initState() {
             ),
             Column(
                 children: List.generate(
-            itemlist[count]["options"].length,
+              itemlist[count]["options"].length,
               (index) => Padding(
                 padding: const EdgeInsets.only(top: 20),
                 child: InkWell(
@@ -111,7 +107,7 @@ void initState() {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                         itemlist[count]["options"][index],
+                          itemlist[count]["options"][index],
                           style: TextStyle(
                               fontWeight: FontWeight.w600,
                               fontSize: 18,
@@ -136,7 +132,7 @@ void initState() {
                   setState(() {});
 
                   selectedanswerindex = null;
-                  if (count < DummyDb.SportsList.length - 1) {
+                  if (count < itemlist.length - 1) {
                     count++;
                   } else {
                     Navigator.pushReplacement(
@@ -173,12 +169,12 @@ void initState() {
 
   Color getcolor(int optionIndex) {
     if (selectedanswerindex != null &&
-        optionIndex == DummyDb.SportsList[count]["answerindex"]) {
+        optionIndex == itemlist[count]["answerindex"]) {
       return ColorConstants.Green;
     }
 
     if (selectedanswerindex == optionIndex) {
-      if (selectedanswerindex == DummyDb.SportsList[count]["answerindex"]) {
+      if (selectedanswerindex == itemlist[count]["answerindex"]) {
         return ColorConstants.Green;
       } else {
         return ColorConstants.Red;

@@ -42,7 +42,7 @@ class ContainerScreen extends StatelessWidget {
                       height: 5,
                     ),
                     Text(
-                      "20 Questions",
+                      "10 Questions",
                       style: TextStyle(
                           color: ColorConstants.TextWhite, fontSize: 12),
                     ),

@@ -3,6 +3,7 @@ import 'package:clonequiz_app/dummy_db.dart';
 import 'package:clonequiz_app/utils/color_constants.dart';
 import 'package:clonequiz_app/view/Result_screen/result_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:percent_indicator/linear_percent_indicator.dart';
 
 class QuestionScreen extends StatefulWidget {
   final String itemname;
@@ -108,12 +109,27 @@ class _QuestionScreenState extends State<QuestionScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ColorConstants.primaryColor,
-        actions: [
-          Text(
-            "${count + 1} / ${itemlist.length}",
-            style: TextStyle(color: ColorConstants.TextWhite),
-          )
-        ],
+        title: Padding(
+          padding: EdgeInsets.all(15.0),
+          child: LinearPercentIndicator(
+            width: 240,
+            lineHeight: 20,
+            percent:
+                (count + 1) / itemlist.length, // Update this to show progress
+            center: Text(
+              "${((count + 1) / itemlist.length * 100).toStringAsFixed(1)}%",
+              style: TextStyle(fontSize: 15, color: ColorConstants.TextWhite),
+            ),
+            trailing: Icon(
+              Icons.mood,
+              color: ColorConstants.TextWhite,
+            ),
+            // ignore: deprecated_member_use
+            linearStrokeCap: LinearStrokeCap.roundAll,
+            backgroundColor: ColorConstants.primaryColor,
+            progressColor: ColorConstants.Containerclr,
+          ),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

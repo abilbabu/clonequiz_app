@@ -1,5 +1,6 @@
 import 'package:clonequiz_app/dummy_db.dart';
 import 'package:clonequiz_app/utils/color_constants.dart';
+import 'package:clonequiz_app/view/Question_Screen/question_screen.dart';
 
 import 'package:flutter/material.dart';
 
@@ -102,7 +103,11 @@ class _ResultScreenState extends State<ResultScreen> {
                 SizedBox(width: 10),
                 InkWell(
                   onTap: () {
-                    //  Navigator.push(context, MaterialPageRoute(builder: (context) => QuestionScreen(itemname: itemname),))
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                QuestionScreen(itemname: "itemname")));
                   },
                   child: Text(
                     "Retry",

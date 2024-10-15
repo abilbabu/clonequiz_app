@@ -1,5 +1,6 @@
 import 'package:clonequiz_app/utils/color_constants.dart';
-import 'package:clonequiz_app/view/homeScreen/home_screen.dart';
+import 'package:clonequiz_app/view/Splash_screen/splach_screen.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(scaffoldBackgroundColor: ColorConstants.primaryColor),
-      home: HomeScreen(),
+      home: SplachScreen(),
     );
   }
 }

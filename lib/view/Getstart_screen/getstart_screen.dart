@@ -1,39 +1,40 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:clonequiz_app/utils/color_constants.dart';
-import 'package:clonequiz_app/view/homeScreen/home_screen.dart';
+import 'package:clonequiz_app/view/login_screen/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class GetstartScreen extends StatelessWidget {
   GetstartScreen({super.key});
 
   final List<String> imgList = [
-    'assets/image/firqu.webp',
-    'assets/image/sec.avif',
-    'assets/image/thi.webp',
-    'assets/image/foure.jpg',
-    'assets/image/five.avif',
+    'assets/image/gk.jpg',
+    'assets/image/his.jpg',
+    'assets/image/mat.jpg',
+    'assets/image/sp.jpg',
+    'assets/image/tech.jpg',
   ];
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+       // resizeToAvoidBottomInset: false, // Prevents resizing on keyboard open
         body: Stack(
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: MediaQuery.of(context).size.height,
+                height: double.infinity, // Ensures full height
                 autoPlay: true,
                 autoPlayInterval: Duration(seconds: 3),
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
                 enlargeCenterPage: true,
+                onPageChanged: (index, reason) {},
               ),
               items: imgList.map((imagePath) {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 1),
+                      width: double.infinity, // Ensures full width
                       decoration: BoxDecoration(color: Colors.black),
                       child: Image.asset(imagePath, fit: BoxFit.cover),
                     );
@@ -44,13 +45,13 @@ class GetstartScreen extends StatelessWidget {
             Align(
               alignment: Alignment.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.all(16.0),
+                padding: const EdgeInsets.all(16),
                 child: InkWell(
                   onTap: () {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => HomeScreen(),
+                        builder: (context) => Loginscreen(),
                       ),
                     );
                   },

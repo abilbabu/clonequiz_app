@@ -18,12 +18,12 @@ class GetstartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-       // resizeToAvoidBottomInset: false, // Prevents resizing on keyboard open
+       
         body: Stack(
           children: [
             CarouselSlider(
               options: CarouselOptions(
-                height: double.infinity, // Ensures full height
+                height: double.infinity,
                 autoPlay: true,
                 autoPlayInterval: Duration(seconds: 3),
                 autoPlayAnimationDuration: Duration(milliseconds: 800),
@@ -34,7 +34,7 @@ class GetstartScreen extends StatelessWidget {
                 return Builder(
                   builder: (BuildContext context) {
                     return Container(
-                      width: double.infinity, // Ensures full width
+                      width: double.infinity, 
                       decoration: BoxDecoration(color: Colors.black),
                       child: Image.asset(imagePath, fit: BoxFit.cover),
                     );

@@ -14,18 +14,19 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
-  late Timer _timer; // Timer variable
-  int _remainingTime = 30; // Countdown time in seconds
-  var itemlist = [];
+  late Timer _timer; 
+  int _remainingTime = 30;
   dynamic count = 0;
   int? selectedanswerindex;
   int rightAnswerCount = 0;
+
+    var itemlist = [];
 
   @override
   void initState() {
     super.initState();
     items();
-    startTimer(); // Start the timer when the screen initializes
+    startTimer(); 
   }
 
   void items() {
@@ -46,13 +47,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
   }
 
   void startTimer() {
-    _remainingTime = 30; // Reset the timer for each question
+    _remainingTime = 30; 
     _timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_remainingTime > 0) {
           _remainingTime--;
         } else {
-          // Handle timeout: Move to the next question
           _timer.cancel();
           handleNextQuestion();
         }
@@ -64,12 +64,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
     if (count < itemlist.length - 1) {
       setState(() {
         count++;
-        selectedanswerindex = null; // Reset selected answer
-        _remainingTime = 30; // Reset timer for the next question
-        startTimer(); // Restart the timer
+        selectedanswerindex = null; 
+        _remainingTime = 30; 
+        startTimer(); 
       });
     } else {
-      // Navigate to the result screen if it was the last question
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -83,7 +82,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
   @override
   void dispose() {
-    _timer.cancel(); // Cancel the timer when the widget is disposed
+    _timer.cancel(); 
     super.dispose();
   }
 
@@ -115,7 +114,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
             width: 240,
             lineHeight: 20,
             percent:
-                (count + 1) / itemlist.length, // Update this to show progress
+                (count + 1) / itemlist.length,
             center: Text(
               "${((count + 1) / itemlist.length * 100).toStringAsFixed(1)}%",
               style: TextStyle(fontSize: 15, color: ColorConstants.TextWhite),
@@ -136,7 +135,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
-            // Circular progress indicator for the timer
+
             Stack(
               alignment: Alignment.center,
               children: [
@@ -144,7 +143,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
                   backgroundColor: ColorConstants.primaryColor,
                   radius: 30,
                   child: CircularProgressIndicator(
-                    value: _remainingTime / 30, // Normalize the value
+                    value: _remainingTime / 30, 
                     backgroundColor: ColorConstants.Containerclr,
                     color: ColorConstants.TextWhite,
                   ),

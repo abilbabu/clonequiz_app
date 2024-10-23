@@ -1,5 +1,4 @@
 import 'package:clonequiz_app/dummy_db.dart';
-import 'package:clonequiz_app/main.dart';
 import 'package:clonequiz_app/utils/color_constants.dart';
 import 'package:clonequiz_app/utils/image_constants.dart';
 import 'package:clonequiz_app/view/Question_Screen/question_screen.dart';
@@ -19,7 +18,7 @@ class HomeScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Hi, $Username",
+              "Hi, Alexa",
               style: TextStyle(
                   color: ColorConstants.TextWhite,
                   fontSize: 20,

@@ -1,7 +1,6 @@
 import 'package:clonequiz_app/utils/color_constants.dart';
 import 'package:clonequiz_app/utils/image_constants.dart';
-import 'package:clonequiz_app/view/Getstart_screen/getstart_screen.dart';
-
+import 'package:clonequiz_app/view/homeScreen/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class SplachScreen extends StatefulWidget {
@@ -19,7 +18,7 @@ class _SplachScreenState extends State<SplachScreen> {
         Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => GetstartScreen(),
+              builder: (context) => HomeScreen(),
             ));
       },
     );
